@@ -56,6 +56,29 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00200000
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 0x0C000000
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 0x3D800000
 BOARD_FLASH_BLOCK_SIZE             := 131072
+BOARD_NAND_PAGE_SIZE := 4096
+
+#define Various Configuration Options.
+
+#define Cache Partition Details.
+#BOARD_CACHE_DEVICE                 := /dev/block/mtdblock4
+BOARD_CACHE_FILESYSTEM             := yaffs2
+#define Data Partition Details.
+#BOARD_DATA_DEVICE                  := /dev/block/mmcblk3p2
+BOARD_DATA_FILESYSTEM              := yaffs2
+
+#define Data Partition Details.
+#BOARD_SYSTEM_DEVICE                  := /dev/block/mmcblk3p2
+BOARD_SYSTEM_FILESYSTEM            := yaffs2
+
+# Setting this to avoid boot locks on the system from using the "misc" partition.
+BOARD_HAS_NO_MISC_PARTITION := true
+# This device does not have an Internal SD Card
+BOARD_HAS_SDCARD_INTERNAL: false
+# external SD Card.
+#BOARD_SDEXT_DEVICE := /dev/block/mmcblk2p2
+#BOARD_SDEXT_FILESYSTEM
+
 
 # add cursor macro to enable/disable hardware cursor
 HAVE_CURSOR := true
