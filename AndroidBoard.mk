@@ -1,10 +1,11 @@
 LOCAL_PATH := $(call my-dir)
 
-
+include $(CLEAR_VARS)
+TARGET_PROVIDES_INIT_RC := true
 file := $(TARGET_ROOT_OUT)/init.rc
 ALL_PREBUILT += $(file)
 $(file) : $(LOCAL_PATH)/init.rc | $(ACP)
-$(transform-prebuilt-to-target)
+	$(transform-prebuilt-to-target)
 
 
 include $(CLEAR_VARS)
