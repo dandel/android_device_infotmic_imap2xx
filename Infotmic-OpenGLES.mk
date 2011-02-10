@@ -23,8 +23,10 @@ PRODUCT_COPY_FILES += \
 #
 
 PRODUCT_COPY_FILES += \
-	device/infotm/Imapx2x0/proprietary/opengl_es/modules/permfd.ko:/system/lib/modules/permfd.ko\
 	device/infotm/Imapx2x0/proprietary/opengl_es/modules/galcore.ko:/system/lib/modules/galcore.ko
+
+# Stragulus: permfd.ko is no longer part of the froyo release
+#	device/infotm/Imapx2x0/proprietary/opengl_es/modules/permfd.ko:/system/lib/modules/permfd.ko
 
 #
 # Commands (Required to install Module)
