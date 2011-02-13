@@ -98,6 +98,7 @@ BOARD_MODEM_HAVE_DATA_DEVICE := true
 
 BOARD_USE_HIGH_RESOLUTION := true
 
-BOARD_USES_TSLIB := true
+# Enable touchscreen calibration library
+TARGET_HAVE_TSLIB := true
 
 BOARD_USES_GSENSOR :=G10
