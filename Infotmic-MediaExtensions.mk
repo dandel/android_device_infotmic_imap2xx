@@ -24,7 +24,7 @@ PRODUCT_COPY_FILES += \
 #Libomx -- Multimedia extensions.
 #
 
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libomx_sharedlibrary.so:/system/lib/libomx_sharedlibrary.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libomx_mp3dec_sharedlibrary.so:/system/lib/libomx_mp3dec_sharedlibrary.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libomx_m4vdec_sharedlibrary.so:/system/lib/libomx_m4vdec_sharedlibrary.so\
@@ -42,7 +42,7 @@ PRODUCT_COPY_FILESB += \
 #
 #x170 series of libraries
 #
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libx170j.so:/system/lib/libx170j.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libdecx170h.so:/system/lib/libdecx170h.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libdecx170m.so:/system/lib/libdecx170m.so\
@@ -55,7 +55,7 @@ PRODUCT_COPY_FILESB += \
 #
 # FFMPEG.
 #
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libavcodec.so:/system/lib/libavcodec.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libavutil.so:/system/lib/libavutil.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libswscale.so:/system/lib/libswscale.so\
@@ -65,7 +65,7 @@ PRODUCT_COPY_FILESB += \
 # Misc Libraries, Unidentified.
 #
 
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libhwdecinterface.so:/system/lib/libhwdecinterface.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libparser.so:/system/lib/libparser.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libmm_dma.so:/system/lib/libmm_dma.so\
@@ -73,7 +73,7 @@ PRODUCT_COPY_FILESB += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libwmapro.so:/system/lib/libwmapro.so
 
 # Configuration.
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/etc/pvplayer.cfg:/system/lib/etc/pvplayer.cfg\
 	device/infotm/Imapx2x0/proprietary/multimedia/overlay.default.so:/system/lib/overlay.default.so\
 
