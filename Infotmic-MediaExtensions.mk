@@ -5,7 +5,7 @@
 #
 # libopencore AMR libraries.
 #
-PRODUCT_COPY_FILESB += \
+PRODUCT_COPY_FILES += \
 	device/infotm/Imapx2x0/proprietary/multimedia/libopencore_flvlocalreg.so:/system/lib/libopencore_flvlocalreg.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libopencore_downloadreg.so:/system/lib/libopencore_downloadreg.so\
 	device/infotm/Imapx2x0/proprietary/multimedia/libopencore_download.so:/system/lib/libopencore_download.so\
