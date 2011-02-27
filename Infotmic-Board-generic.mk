@@ -14,24 +14,38 @@ TARGET_CPU_ABI := armeabi
 #BOARD_USES_GENERIC_AUDIO := true
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
-BOARD_HAVE_BLUETOOTH := true
-HAVE_BLUETOOTH := true
 
 # add cursor macro to enable/disable hardware cursor
 HAVE_CURSOR := true
 
-USE_CAMERA_STUB := false 
-BOARD_CAMERA_LIBRARIES := libcamera
-BOARD_GPS_LIBRARIES := libigps
+# Modify system build properties
+# media.stagefright.enable-player:
+#   use opencore instead of stagefright, this enabled hw video decoding
+# debug.sf.hw:
+#   Use hardware accelerated GUI (seems to have no effect)
+# opencore.asmd:
+#   Enable hardware video decoding (seems to have no effect)
+# log.redirect-stdio: If true, get stdout/err in logcat, for debugging
+PRODUCT_PROPERTY_OVERRIDES += \
+  media.stagefright.enable-player=false \
+	debug.sf.hw=1 \
+	opencore.asmd=1 \
+	log.redirect-stdio=false
 
-WPA_BUILD_SUPPLICANT := true
-BOARD_WPA_SUPPLICANT_DRIVER := WEXT
+# 
+# Copy common proprietary data
+#
 
-BOARD_HAVE_MODEM := false
-BOARD_MODEM_VENDOR := HUAWEI
-BOARD_MODEM_ID := EM770M
-BOARD_MODEM_HAVE_DATA_DEVICE := true
+PRODIR := device/infotm/Imapx2x0/proprietary
 
-BOARD_USE_HIGH_RESOLUTION := true
+# Infotmic Media Extensions.
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,$(PRODIR)/multimedia/system,system)
 
-BOARD_USES_GSENSOR :=G10
+# Infotmic OpenGL ES Support.
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,$(PRODIR)/opengl/system,system)
+
+# Audio Support. Files taken from zt-180 froyo firmware dated 2012-12-??
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,$(PRODIR)/sound/system,system)
