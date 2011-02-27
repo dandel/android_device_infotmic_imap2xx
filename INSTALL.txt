@@ -1,0 +1,21 @@
+# Change to cyanogen source directory
+cd ~/src/cyanogenmod
+
+# Extract proprietary files
+device/infotm/Imapx2x0/tools/get_proprietary_files.sh
+
+# Build cyanogen - this will take a while
+exec bash -login
+source . build/envsetup.sh
+lunch cyanogen_flytouch2-eng
+mka
+
+# Create flashable firmware images
+device/infotm/Imapx2x0/tools/create_firmware.sh
+
+# Output location: out/target/product/Imapx2x0
+# Flash these images to your tablet using burntool:
+ramdisk.img (ramdisk)
+system.img  (system)
+userdata.img (data)
+uImage       (kernel)
