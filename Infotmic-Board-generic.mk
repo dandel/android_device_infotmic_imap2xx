@@ -49,3 +49,7 @@ PRODUCT_COPY_FILES += \
 # Audio Support. Files taken from zt-180 froyo firmware dated 2012-12-??
 PRODUCT_COPY_FILES += \
 	$(call find-copy-subdir-files,*,$(PRODIR)/sound/system,system)
+
+# Misc. hardware support
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,$(PRODIR)/misc/system,system)

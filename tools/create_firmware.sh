@@ -23,7 +23,7 @@ MKYAFFS2="$TOOLDIR/yaffs2/utils/mkyaffs2image"
 if [ ! -x "$MKYAFFS2" ] 
 then
 	echo "Building $MKYAFFS2"
-	cd "$TOOLDIR/yaffs2/utils" && make
+	( cd "$TOOLDIR/yaffs2/utils" && make )
 	if [ ! -x "$MKYAFFS2" ]
 	then
 		echo "Build failed."
