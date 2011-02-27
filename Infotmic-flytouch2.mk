@@ -1,5 +1,7 @@
+DEVDIR := device/infotm/Imapx2x0
+
 # load generic board config first
-$(call inherit-product, device/infotm/Imapx2x0/Infotmic-Board-generic.mk)
+$(call inherit-product, $(DEVDIR)/Infotmic-Board-generic.mk)
 
 #
 # Flytouch 2 / SuperPad / HypePad hardware addons
@@ -36,11 +38,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
   debug.sensors.swap_accel=-y,x,z \
 	dalvik.vm.heapsize=32m
 
+# Override init.rc with our own version
+TARGET_PROVIDES_INIT_RC := true
+PRODUCT_COPY_FILES += \
+	$(DEVDIR)/resources/init.flytouch2.rc:root/init.rc
+
+# Touchscreen calibration config
+PRODUCT_COPY_FILES += \
+	$(DEVDIR)/resources/etc/ts.conf:system/etc/ts.conf
+
+# vold config
+PRODUCT_COPY_FILES += \
+	$(DEVDIR)/resources/etc/vold.fstab:system/etc/vold.fstab
+
+# WiFi config
+PRODUCT_COPY_FILES += \
+	$(DEVDIR)/resources/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+
 # 
 # Copy flytouch2-specific proprietary data
 #
 
-PRODIR := device/infotm/Imapx2x0/proprietary
+PRODIR := $(DEVDIR)/proprietary
 
 # Wireless Support.
 PRODUCT_COPY_FILES += \
@@ -52,7 +71,7 @@ PRODUCT_COPY_FILES += \
 
 # Also copy to build object dir so libhwardware_legacy.so will link.
 PRODUCT_COPY_FILES += \
-	device/infotm/Imapx2x0/proprietary/gps/system/lib/libigps.so:obj/lib/libigps.so
+	$(PRODIR)/gps/system/lib/libigps.so:obj/lib/libigps.so
 
 # Sensors support.
 PRODUCT_COPY_FILES += \
