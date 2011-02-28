@@ -19,6 +19,7 @@ which cpio || {
 
 # has mkyaffs2image been compiled?
 MKYAFFS2="$TOOLDIR/yaffs2/utils/mkyaffs2image"
+#MKYAFFS2="$HOME/bin/mkyaffs2image"
 
 if [ ! -x "$MKYAFFS2" ] 
 then
@@ -67,7 +68,10 @@ rm "$OUTDIR/ramdisk.gz"
 
 echo "Creating system.img ... "
 rm -f "$OUTDIR/system.img"
-"$MKYAFFS2" $SYSDIR $OUTDIR/system.img
+# sysdir MUST be called system, and the directory path used in the cmdline
+# must also be at least _7_ chars long. Thanks, sloppy programmer, for
+# stealing 30 minutes of my time :(
+"$MKYAFFS2" -f $SYSDIR $OUTDIR/system.img
 
 echo "Creating userdata.img ... "
 rm -f "$OUTDIR/userdata.img"
