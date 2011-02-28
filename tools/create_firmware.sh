@@ -18,8 +18,8 @@ which cpio || {
 }
 
 # has mkyaffs2image been compiled?
-MKYAFFS2="$TOOLDIR/yaffs2/utils/mkyaffs2image"
-#MKYAFFS2="$HOME/bin/mkyaffs2image"
+#MKYAFFS2="$TOOLDIR/yaffs2/utils/mkyaffs2image"
+MKYAFFS2=$(echo "$HOME"/src/cyanogenmod/out/host/*/bin/mkyaffs2image)
 
 if [ ! -x "$MKYAFFS2" ] 
 then
@@ -71,7 +71,12 @@ rm -f "$OUTDIR/system.img"
 # sysdir MUST be called system, and the directory path used in the cmdline
 # must also be at least _7_ chars long. Thanks, sloppy programmer, for
 # stealing 30 minutes of my time :(
-"$MKYAFFS2" -f $SYSDIR $OUTDIR/system.img
+#
+# This image works only with very specific kernels, such as the one included.
+# Kernel from the v2852 firmware doesn't work, it will destroy the filesystem.
+# Worth investigating how to create an fs that does work with v2852, as that
+# kernel has working brightness/standby control!
+"$MKYAFFS2" -c 4096 -s 128 -f $SYSDIR $OUTDIR/system.img
 
 echo "Creating userdata.img ... "
 rm -f "$OUTDIR/userdata.img"
