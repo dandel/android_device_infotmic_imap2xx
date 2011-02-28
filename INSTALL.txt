@@ -1,5 +1,22 @@
-# Change to cyanogen source directory
+# checkout with repo - this takes forever
+mkdir ~/src/cyanogenmod
 cd ~/src/cyanogenmod
+repo init -u git://github.com/CyanogenMod/android.git -b froyo
+repo sync -j16
+# replace repo config (This is probably All Wrong - feedback welcome!)
+cd android
+git pull https://github.com/dandel/android.git froyo
+cd ../.repo
+ln -sf ../android/default.xml manifest.xml
+cd ..
+# more waiting
+repo sync -j16
+
+# Cyanogen: get rom manager
+vendor/cyanogen/get-rommanager
+
+# Optional: get google apps
+vendor/cyanogen/get-google-files
 
 # Extract proprietary files
 device/infotm/Imapx2x0/tools/get_proprietary_files.sh
@@ -8,7 +25,10 @@ device/infotm/Imapx2x0/tools/get_proprietary_files.sh
 exec bash -login
 source . build/envsetup.sh
 lunch cyanogen_flytouch2-eng
+# make without google tools
 mka
+# OR: make with google tools:
+mka CYANOGEN_WITH_GOOGLE=true
 
 # Create flashable firmware images
 device/infotm/Imapx2x0/tools/create_firmware.sh
