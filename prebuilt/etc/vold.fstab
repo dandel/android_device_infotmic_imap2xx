@@ -8,5 +8,5 @@
 ## <sysfs_path> - List of sysfs paths to source devices
 ######################
 
-dev_mount sdcard /mnt/sdcard/sd auto /devices/platform/imapx200_sdi0.0/mmc_host/mmc0
-dev_mount sdcard2 /mnt/sdcard/sd2 auto /devices/platform/imapx200_sdi1.1/mmc_host/mmc1
+dev_mount sdcard /mnt/sdcard auto /devices/platform/imapx200_sdi0.0/mmc_host/mmc0
+dev_mount sdcard2 /mnt/sdcard2 auto /devices/platform/imapx200_sdi1.1/mmc_host/mmc1
