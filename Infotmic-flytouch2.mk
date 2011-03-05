@@ -41,19 +41,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Override init.rc with our own version
 TARGET_PROVIDES_INIT_RC := true
 PRODUCT_COPY_FILES += \
-	$(DEVDIR)/resources/init.flytouch2.rc:root/init.rc
+	$(DEVDIR)/prebuilt/init.flytouch2.rc:root/init.rc
 
 # Touchscreen calibration config
 PRODUCT_COPY_FILES += \
-	$(DEVDIR)/resources/etc/ts.conf:system/etc/ts.conf
+	$(DEVDIR)/prebuilt/etc/ts.conf:system/etc/ts.conf
 
 # vold config
 PRODUCT_COPY_FILES += \
-	$(DEVDIR)/resources/etc/vold.fstab:system/etc/vold.fstab
+	$(DEVDIR)/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
 # WiFi config
 PRODUCT_COPY_FILES += \
-	$(DEVDIR)/resources/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+	$(DEVDIR)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 # 
 # Copy flytouch2-specific proprietary data

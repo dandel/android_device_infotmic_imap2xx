@@ -53,3 +53,7 @@ PRODUCT_COPY_FILES += \
 # Misc. hardware support
 PRODUCT_COPY_FILES += \
 	$(call find-copy-subdir-files,*,$(PRODIR)/misc/system,system)
+
+# Prebuilt kernel modules from self-compiled kernel
+PRODUCT_COPY_FILES += \
+	$(call find-copy-subdir-files,*,device/infotm/Imapx2x0/prebuilt/system,system)

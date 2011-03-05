@@ -37,5 +37,5 @@ device/infotm/Imapx2x0/tools/create_firmware.sh
 # Flash these images to your tablet using burntool:
 ramdisk.img (ramdisk)
 system.img  (system)
-userdata.img (data)
+userdata.img (data) => deletes all your settings, so backup first!
 uImage       (kernel)

@@ -52,10 +52,7 @@
 #define AID_VPN           1016  /* vpn system */
 #define AID_KEYSTORE      1017  /* keystore subsystem */
 #define AID_USB           1018  /* USB devices */
-#define AID_DRM           1019  /* DRM server */
-#define AID_DRMIO         1020  /* DRM IO server */
-#define AID_GPS           1021  /* GPS daemon */
-#define AID_NFC           1022  /* nfc subsystem */
+#define AID_WIMAX         1030  /* wimax subsystem */
 
 #define AID_SHELL         2000  /* adb and debug shell user */
 #define AID_CACHE         2001  /* cache access */
@@ -80,7 +77,7 @@ struct android_id_info {
     unsigned aid;
 };
 
-static const struct android_id_info android_ids[] = {
+static struct android_id_info android_ids[] = {
     { "root",      AID_ROOT, },
     { "system",    AID_SYSTEM, },
     { "radio",     AID_RADIO, },
@@ -97,9 +94,6 @@ static const struct android_id_info android_ids[] = {
     { "adb",       AID_ADB, },
     { "install",   AID_INSTALL, },
     { "media",     AID_MEDIA, },
-    { "drm",       AID_DRM, },
-    { "drmio",     AID_DRMIO, },
-    { "nfc",       AID_NFC, },
     { "shell",     AID_SHELL, },
     { "cache",     AID_CACHE, },
     { "diag",      AID_DIAG, },
@@ -109,12 +103,12 @@ static const struct android_id_info android_ids[] = {
     { "vpn",       AID_VPN, },
     { "keystore",  AID_KEYSTORE, },
     { "usb",       AID_USB, },
-    { "gps",       AID_GPS, },
     { "inet",      AID_INET, },
     { "net_raw",   AID_NET_RAW, },
     { "net_admin", AID_NET_ADMIN, },
     { "misc",      AID_MISC, },
     { "nobody",    AID_NOBODY, },
+    { "wimax",     AID_WIMAX, },
 };
 
 #define android_id_count \
@@ -146,10 +140,10 @@ static struct fs_path_config android_dirs[] = {
     { 00771, AID_SYSTEM, AID_SYSTEM, "data" },
     { 00750, AID_ROOT,   AID_SHELL,  "sbin" },
     { 00755, AID_ROOT,   AID_SHELL,  "system/bin" },
-    { 00755, AID_ROOT,   AID_SHELL,  "system/vendor" },
     { 00755, AID_ROOT,   AID_SHELL,  "system/xbin" },
     { 00755, AID_ROOT,   AID_ROOT,   "system/etc/ppp" },
     { 00777, AID_ROOT,   AID_ROOT,   "sdcard" },
+    { 00771, AID_SYSTEM, AID_SYSTEM, "sd-ext" },
     { 00755, AID_ROOT,   AID_ROOT,   0 },
 };
 
@@ -193,12 +187,13 @@ static struct fs_path_config android_files[] = {
 		/* the following file is INTENTIONALLY set-uid, and IS included
 		 * in user builds. */
     { 06750, AID_ROOT,      AID_SHELL,     "system/bin/run-as" },
+    { 06755, AID_ROOT,      AID_ROOT,      "system/xbin/hcitool" },
     { 00755, AID_ROOT,      AID_SHELL,     "system/bin/*" },
     { 00755, AID_ROOT,      AID_SHELL,     "system/xbin/*" },
-    { 00755, AID_ROOT,      AID_SHELL,     "system/vendor/bin/*" },
     { 00750, AID_ROOT,      AID_SHELL,     "sbin/*" },
     { 00755, AID_ROOT,      AID_ROOT,      "bin/*" },
     { 00750, AID_ROOT,      AID_SHELL,     "init*" },
+    { 00750, AID_ROOT,      AID_SHELL,     "system/etc/init.d/*" },
     { 00644, AID_ROOT,      AID_ROOT,       0 },
 };
 

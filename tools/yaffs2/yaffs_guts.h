@@ -824,9 +824,6 @@ int yaffs_SetAttributes(yaffs_Object * obj, struct iattr *attr);
 int yaffs_GetAttributes(yaffs_Object * obj, struct iattr *attr);
 
 /* File operations */
-#ifndef loff_t
-typedef long long loff_t;
-#endif
 int yaffs_ReadDataFromFile(yaffs_Object * obj, __u8 * buffer, loff_t offset,
 			   int nBytes);
 int yaffs_WriteDataToFile(yaffs_Object * obj, const __u8 * buffer, loff_t offset,

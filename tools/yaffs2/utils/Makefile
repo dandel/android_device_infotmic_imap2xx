@@ -35,7 +35,7 @@ MKYAFFS2SOURCES = mkyaffs2image.c
 MKYAFFS2LINKS = yaffs_packedtags2.c yaffs_tagsvalidity.c
 MKYAFFS2IMAGEOBJS = $(MKYAFFS2SOURCES:.c=.o) $(MKYAFFS2LINKS:.c=.o)
 
-all: mkyaffsimage mkyaffs2image
+all: mkyaffs2image
 
 $(COMMONLINKS) $(MKYAFFSLINKS) $(MKYAFFS2LINKS):
 	ln -s ../$@ $@
