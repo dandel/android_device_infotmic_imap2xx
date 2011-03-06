@@ -2,7 +2,7 @@
 
 # Location of beta firmware file containing proprietary data
 FIRMWARE_URL="http://www.stack.nl/~brama/flytouch2/cm6_v0.img.bz2"
-FIRMWARE_MD5="9126745cb5165cbc9b96fcd3ef562a50"
+FIRMWARE_MD5="c52a6d16f7c381973d86ab6fd5f5a4c7"
 
 PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin
 
@@ -32,13 +32,13 @@ fi
 # fetch firmware file
 FIRMWAREFILE="$P/system.img"
 
-if [ ! -f "$FIRMWAREFILE" ]
+if [ ! -f "$FIRMWAREFILE.bz2" ]
 then
-	wget -O "${FIRMWAREFILE}.bz2" "$FIRMWARE_URL" && bunzip2 "${FIRMWAREFILE}.bz2"
+	wget -O "${FIRMWAREFILE}.bz2" "$FIRMWARE_URL"
 fi
 
 md5=0
-[ -f "$FIRMWAREFILE" ] || {
+[ -f "$FIRMWAREFILE.bz2" ] || {
 	echo "Failed to fetch $FIRMWARE_URL"
 	exit 1
 }
@@ -46,7 +46,7 @@ md5=0
 echo "Checking md5 checksum"
 
 # verify md5
-md5=$(md5sum "$FIRMWAREFILE" | awk '{ print $1 }')
+md5=$(md5sum "$FIRMWAREFILE.bz2" | awk '{ print $1 }')
 if [ "$md5" != "$FIRMWARE_MD5" ]
 then
 	echo "MD5Sum doesn't match, bailing out."
@@ -57,6 +57,8 @@ fi
 
 # bail on errors
 set -e 
+
+bunzip2 "${FIRMWAREFILE}.bz2"
 
 TMPROOT=$(mktemp -d)
 
