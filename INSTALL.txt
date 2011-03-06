@@ -13,6 +13,7 @@ vendor/cyanogen/get-google-files
 # Extract proprietary files
 device/infotm/Imapx2x0/tools/get_proprietary_files.sh
 
+
 # Build cyanogen - this will take a while
 exec bash -login
 source ./build/envsetup.sh
@@ -22,11 +23,14 @@ mka
 # OR: make with google tools:
 mka CYANOGEN_WITH_GOOGLE=true
 
+# If cmparts doesn't compile, checkout an older version:
+( cd packages/apps/CMParts && git checkout 69613a248519fed7d971bd6292013d36097d0107 )
+
 # Create flashable firmware images
 device/infotm/Imapx2x0/tools/create_firmware.sh
 
 # Output location: out/target/product/Imapx2x0
-# Flash these images to your tablet using burntool:
+# Flash these images to your tablet using burntool or IUW:
 ramdisk.img (ramdisk)
 system.img  (system)
 userdata.img (data) => deletes all your settings, so backup first!
