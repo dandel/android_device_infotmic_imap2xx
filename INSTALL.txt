@@ -1,15 +1,7 @@
 # checkout with repo - this takes forever
 mkdir ~/src/cyanogenmod
 cd ~/src/cyanogenmod
-repo init -u git://github.com/CyanogenMod/android.git -b froyo
-repo sync -j16
-# replace repo config (This is probably All Wrong - feedback welcome!)
-cd android
-git pull https://github.com/dandel/android.git froyo
-cd ../.repo
-ln -sf ../android/default.xml manifest.xml
-cd ..
-# more waiting
+repo init -u git://github.com/dandel/android.git -b froyo
 repo sync -j16
 
 # Cyanogen: get rom manager
