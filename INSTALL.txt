@@ -15,7 +15,7 @@ device/infotm/Imapx2x0/tools/get_proprietary_files.sh
 
 # Build cyanogen - this will take a while
 exec bash -login
-source . build/envsetup.sh
+source ./build/envsetup.sh
 lunch cyanogen_flytouch2-eng
 # make without google tools
 mka

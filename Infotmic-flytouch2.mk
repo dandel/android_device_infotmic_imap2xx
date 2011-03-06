@@ -43,6 +43,10 @@ TARGET_PROVIDES_INIT_RC := true
 PRODUCT_COPY_FILES += \
 	$(DEVDIR)/prebuilt/init.flytouch2.rc:root/init.rc
 
+# Supply our own boot logo
+PRODUCT_COPY_FILES += \
+	$(DEVDIR)/prebuilt/initlogo.rle:root/initlogo.rle
+
 # Touchscreen calibration config
 PRODUCT_COPY_FILES += \
 	$(DEVDIR)/prebuilt/etc/ts.conf:system/etc/ts.conf
