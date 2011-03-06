@@ -39,3 +39,11 @@ ramdisk.img (ramdisk)
 system.img  (system)
 userdata.img (data) => deletes all your settings, so backup first!
 uImage       (kernel)
+
+# After booting and configuring your google account, enable full market:
+
+ * Go to Settings > Manage Applications > All > Market and pick Clear Cache
+   then Force Stop
+ * Go to Settings > Manage Applications > All > Google Services Framework
+   and pick Clear Data then Force Stop
+ * Reboot tablet
